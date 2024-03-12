@@ -5,7 +5,7 @@ import { DashboardContainerComponent } from '../../../common/containers/dashboar
   selector: 'app-balance-report',
   standalone: true,
   imports: [
-    DashboardContainerComponent
+    DashboardContainerComponent,
   ],
   templateUrl: './balance-report.component.html',
   styleUrl: './balance-report.component.scss'

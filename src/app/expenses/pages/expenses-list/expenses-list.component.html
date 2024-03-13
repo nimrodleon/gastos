@@ -10,7 +10,7 @@
       <p-inputIcon styleClass="pi pi-search" />
       <input type="text" pInputText [(ngModel)]="query" placeholder="Buscar..." />
     </p-iconField>
-    <p-button label="Agregar Gasto"></p-button>
+    <p-button (onClick)="addExpense()" label="Agregar Gasto"></p-button>
   </div>
 
   <p-table [value]="products" tableStyleClass="mt-4" [tableStyle]="{ 'min-width': '50rem' }">
@@ -36,4 +36,6 @@
     </ng-template>
   </p-table>
 
+  <app-expense-form-modal [visible]="visibleModal"
+    (visibilityChanged)="changeVisibleModal($event)"></app-expense-form-modal>
 </app-dashboard-container>

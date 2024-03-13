@@ -1,0 +1,37 @@
+<app-dashboard-container>
+  <h4>Categorías</h4>
+
+  <div class="flex gap-3">
+    <p-dropdown optionLabel="name" placeholder="Tipo Categoría"></p-dropdown>
+    <p-iconField iconPosition="left">
+      <p-inputIcon styleClass="pi pi-search" />
+      <input type="text" pInputText [(ngModel)]="query" placeholder="Buscar..." />
+    </p-iconField>
+    <p-button (onClick)="addExpense()" label="Agregar Categoría"></p-button>
+  </div>
+
+  <p-table [value]="products" tableStyleClass="mt-4" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Tipo</th>
+        <th>Categoría</th>
+        <th>Nota</th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{ product.code }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>
+
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <app-category-form-modal [visible]="visibleModal"
+    (visibilityChanged)="changeVisibleModal($event)"></app-category-form-modal>
+</app-dashboard-container>

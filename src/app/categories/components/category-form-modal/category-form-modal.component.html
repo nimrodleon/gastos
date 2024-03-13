@@ -1,0 +1,19 @@
+<p-dialog header="Agregar Categoría" [(visible)]="visible" [modal]="true" [draggable]="false" [resizable]="false"
+  (onHide)="hideModal()">
+  <div class="flex flex-column gap-2 mb-3">
+    <label for="username">Categoría</label>
+    <input type="text" pInputText />
+  </div>
+  <div class="flex flex-column gap-2 mb-3">
+    <label for="username">Tipo Categoría</label>
+    <p-dropdown optionLabel="name" placeholder="Seleccione un Tipo" styleClass="w-full"></p-dropdown>
+  </div>
+  <div class="flex flex-column gap-2 mb-3">
+    <label for="username">Añadir Nota</label>
+    <textarea pInputTextarea></textarea>
+  </div>
+  <div class="flex justify-content-center gap-2">
+    <p-button label="Cancelar" (onClick)="hideModal()" severity="secondary"></p-button>
+    <p-button label="Guardar"></p-button>
+  </div>
+</p-dialog>

@@ -27,10 +27,9 @@ export class BalanceReportComponent implements OnInit {
   ngOnInit() {
     // Initialize years array
     this.years = [
-      { label: '2021', value: 2021 },
-      { label: '2022', value: 2022 },
-      { label: '2023', value: 2023 },
+      { label: 'TOTAL', value: 0 },
       { label: '2024', value: 2024 },
+      { label: '2023', value: 2023 },
       // Add more years as needed
     ];
 

@@ -1,26 +1,24 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
-import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
-  selector: 'app-expense-form-modal',
+  selector: 'app-category-form-modal',
   standalone: true,
   imports: [
     DialogModule,
     InputTextModule,
-    InputNumberModule,
     InputTextareaModule,
-    AutoCompleteModule,
+    DropdownModule,
     ButtonModule,
   ],
-  templateUrl: './expense-form-modal.component.html',
-  styleUrl: './expense-form-modal.component.scss'
+  templateUrl: './category-form-modal.component.html',
+  styleUrl: './category-form-modal.component.scss'
 })
-export class ExpenseFormModalComponent {
+export class CategoryFormModalComponent {
   @Input()
   visible: boolean = false;
   @Output()
@@ -29,5 +27,4 @@ export class ExpenseFormModalComponent {
   public hideModal(): void {
     this.visibilityChanged.emit(false);
   }
-
 }

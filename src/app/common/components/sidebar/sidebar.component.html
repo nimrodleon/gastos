@@ -1,14 +1,18 @@
 <div class="sidebar">
+  <h2 routerLink="/" class="text-primary cursor-pointer">Control Gastos</h2>
   <ul class="menu">
     <li>
-      <a routerLink="/">Balance</a>
-    </li>
-    <li><a href="/income-list">Ingresos</a></li>
-    <li>
-      <a routerLink="/expenses">Gastos</a>
+      <a routerLink="/" routerLinkActive="text-primary" [routerLinkActiveOptions]="{exact: true}">
+        <i class="pi pi-chart-line"></i> Saldo</a>
     </li>
     <li>
-      <a href="/category-list">Categorias</a>
+      <a routerLink="/income-list" routerLinkActive="text-primary"><i class="pi pi-dollar"></i> Ingresos</a>
+    </li>
+    <li>
+      <a routerLink="/expenses" routerLinkActive="text-primary"><i class="pi pi-credit-card"></i> Gastos</a>
+    </li>
+    <li>
+      <a routerLink="/category-list" routerLinkActive="text-primary"><i class="pi pi-tags"></i> Categorias</a>
     </li>
   </ul>
 </div>

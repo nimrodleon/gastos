@@ -1,0 +1,26 @@
+.sidebar {
+  padding: 15px;
+  width: 270px;
+  border-right: 1px solid #e0e0e0;
+  height: 100vh;
+}
+
+.menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 1.4rem;
+
+  li {
+    margin-bottom: 15px;
+  }
+
+  a {
+    padding: 5px;
+    text-decoration: none;
+    color: #374151;
+    &:hover {
+      color: #3b82f6;
+    }
+  }
+}

@@ -1,3 +1,43 @@
 <app-dashboard-container>
-  <h4>Balance</h4>
+  <div class="flex align-items-center gap-3 mb-2">
+    <h4>Balance</h4>
+    <p-dropdown [options]="years" [(ngModel)]="selectedYear" (onChange)="onYearChange($event)"></p-dropdown>
+  </div>
+  <div class="grid mb-2">
+    <div class="col">
+      <p-card>
+        <div class="flex align-items-center flex-column">
+          <h4 class="mb-1">Ingreso Anual</h4>
+          <h2 class="mb-0">S/ 350.00</h2>
+        </div>
+      </p-card>
+    </div>
+    <div class="col">
+      <p-card>
+        <div class="flex align-items-center flex-column">
+          <h4 class="mb-1">Gasto Anual</h4>
+          <h2 class="mb-0">S/ 100.00</h2>
+        </div>
+      </p-card>
+    </div>
+    <div class="col">
+      <p-card>
+        <div class="flex align-items-center flex-column">
+          <h4 class="mb-1">Ingreso Marzo</h4>
+          <h2 class="mb-0">S/ 50.00</h2>
+        </div>
+      </p-card>
+    </div>
+    <div class="col">
+      <p-card>
+        <div class="flex align-items-center flex-column">
+          <h4 class="mb-1">Gasto Marzo</h4>
+          <h2 class="mb-0">S/ 40.00</h2>
+        </div>
+      </p-card>
+    </div>
+  </div>
+  <p-card>
+    <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+  </p-card>
 </app-dashboard-container>

@@ -2,13 +2,13 @@
 @category_id=dc03a51f-548c-4fbb-a408-66ad700c3cb3
 @id=4094eba0-57f7-4b54-9ea5-0f63b06cc10f
 
-### Obtener todas las expenses
+### Obtener todos los gastos
 GET {{host}}/expenses?from_date=2024-03-14&to_date=2024-03-14&note_filter=46
 
-### Obtener una expense por ID
+### Obtener un gasto por ID
 GET {{host}}/expenses/{{id}}
 
-### Crear una nueva expense
+### Crear un gasto
 POST {{host}}/expenses
 Content-Type: application/json
 
@@ -18,7 +18,7 @@ Content-Type: application/json
   "note": "F001-45"
 }
 
-### Actualizar una expense existente
+### Actualizar un gasto existente
 PUT {{host}}/expenses/{{id}}
 Content-Type: application/json
 
@@ -28,5 +28,5 @@ Content-Type: application/json
   "note": "Updated expense 1"
 }
 
-### Eliminar una expense por ID
+### Eliminar un gasto por ID
 DELETE {{host}}/expenses/{{id}}

@@ -10,12 +10,12 @@ import (
 	"github.com/nimrodleon/gastos/utils"
 )
 
-func ExpenseHandler(app *fiber.App) {
-	repo := repositories.NewExpenseRepository()
+func IncomeHandler(app *fiber.App) {
+	repo := repositories.NewIncomeRepository()
 
-	expenseGroup := app.Group("/expenses")
+	incomeGroup := app.Group("/incomes")
 
-	expenseGroup.Get("/", func(c *fiber.Ctx) error {
+	incomeGroup.Get("/", func(c *fiber.Ctx) error {
 		fromDateStr := c.Query("from_date", time.Now().AddDate(0, -1, 0).Format("2006-01-02"))
 		toDateStr := c.Query("to_date", time.Now().Format("2006-01-02"))
 
@@ -27,71 +27,71 @@ func ExpenseHandler(app *fiber.App) {
 		}
 
 		noteFilter := c.Query("note_filter", "")
-		expenses, err := repo.GetAll(fromDate, toDate, noteFilter)
+		incomes, err := repo.GetAll(fromDate, toDate, noteFilter)
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 				"error": err.Error(),
 			})
 		}
-		return c.JSON(expenses)
+		return c.JSON(incomes)
 	})
 
-	expenseGroup.Get("/:id", func(c *fiber.Ctx) error {
+	incomeGroup.Get("/:id", func(c *fiber.Ctx) error {
 		id, err := uuid.Parse(c.Params("id"))
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 				"error": "Invalid ID",
 			})
 		}
-		expense, err := repo.GetByID(id)
+		income, err := repo.GetByID(id)
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 				"error": err.Error(),
 			})
 		}
-		return c.JSON(expense)
+		return c.JSON(income)
 	})
 
-	expenseGroup.Post("/", func(c *fiber.Ctx) error {
-		expense := new(models.Expense)
-		if err := c.BodyParser(expense); err != nil {
+	incomeGroup.Post("/", func(c *fiber.Ctx) error {
+		income := new(models.Income)
+		if err := c.BodyParser(income); err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 				"error": "Invalid request body",
 			})
 		}
-		err := repo.Create(expense)
+		err := repo.Create(income)
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 				"error": err.Error(),
 			})
 		}
-		return c.JSON(expense)
+		return c.JSON(income)
 	})
 
-	expenseGroup.Put("/:id", func(c *fiber.Ctx) error {
+	incomeGroup.Put("/:id", func(c *fiber.Ctx) error {
 		id, err := uuid.Parse(c.Params("id"))
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 				"error": "Invalid ID",
 			})
 		}
-		expense := new(models.Expense)
-		if err := c.BodyParser(expense); err != nil {
+		income := new(models.Income)
+		if err := c.BodyParser(income); err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 				"error": "Invalid request body",
 			})
 		}
-		expense.ID = id
-		err = repo.Update(expense)
+		income.ID = id
+		err = repo.Update(income)
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 				"error": err.Error(),
 			})
 		}
-		return c.JSON(expense)
+		return c.JSON(income)
 	})
 
-	expenseGroup.Delete("/:id", func(c *fiber.Ctx) error {
+	incomeGroup.Delete("/:id", func(c *fiber.Ctx) error {
 		id, err := uuid.Parse(c.Params("id"))
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{

@@ -1,22 +1,22 @@
 @host=http://localhost:3000
 
-###
+### Obtener todas las categorías
 GET {{host}}/categories?category_type=INGRESO&name=cat
 
-###
+### Obtener una cateogía por ID
 GET {{host}}/categories/dc03a51f-548c-4fbb-a408-66ad700c3cb3
 
-###
+### Crear una categoría
 POST {{host}}/categories
 Content-Type: application/json
 
 {
   "name": "categoria 1",
-  "category_type": "INGRESO",
+  "category_type": "GASTO",
   "note": "-"
 }
 
-###
+### Actualizar una categoría
 PUT  {{host}}/categories/dc03a51f-548c-4fbb-a408-66ad700c3cb3
 Content-Type: application/json
 
@@ -26,5 +26,5 @@ Content-Type: application/json
   "note": "-"
 }
 
-###
+### Eliminar una categoría por ID
 DELETE {{host}}/categories/efe8e69a-1b5f-441a-832f-39d23e8efd69

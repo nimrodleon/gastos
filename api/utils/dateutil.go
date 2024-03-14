@@ -12,10 +12,11 @@ func CreateStartAndEndOfDay(date time.Time, isEndDate bool) time.Time {
 	return date.Truncate(time.Hour * 24)
 }
 
-// ParseAndAdjustDate parses the fromDateStr and toDateStr strings into time.Time values
-// using the "2006-01-02" format. It also adjusts the parsed dates to the start and end of the day.
-// It returns the adjusted start and end of the day time.Time values, along with any error encountered.
-func ParseAndAdjustDate(fromDateStr, toDateStr string) (time.Time, time.Time, error) {
+// AdjustDateRange adjusts the date range by returning the start and end of the day for the given dates.
+// It takes two date strings (in the format "2006-01-02") as input: fromDateStr and toDateStr.
+// It returns the start of the day for fromDate and the end of the day for toDate.
+// If there is an error parsing the date strings, it returns zero time values and the error.
+func AdjustDateRange(fromDateStr, toDateStr string) (time.Time, time.Time, error) {
 	fromDate, err := time.Parse("2006-01-02", fromDateStr)
 	if err != nil {
 		return time.Time{}, time.Time{}, err

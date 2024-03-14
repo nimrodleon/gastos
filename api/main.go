@@ -13,6 +13,7 @@ func main() {
 	app := fiber.New()
 	handlers.CategoryHandler(app)
 	handlers.ExpenseHandler(app)
+	handlers.IncomeHandler(app)
 
 	db, err := database.Connect()
 	if err != nil {

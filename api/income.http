@@ -1,0 +1,32 @@
+@host=http://localhost:3000
+@category_id=9f066585-0283-4921-90b9-651e5d835d6d
+@id=65c07c29-d11c-46f7-a1df-a7c54e8de41f
+
+### Obtener todos los ingresos
+GET {{host}}/incomes?from_date=2024-03-14&to_date=2024-03-14&note_filter=46
+
+### Obtener un ingreso por ID
+GET {{host}}/incomes/{{id}}
+
+### Crear una nuevo ingreso
+POST {{host}}/incomes
+Content-Type: application/json
+
+{
+  "amount": 10.5,
+  "category_id": "{{category_id}}",
+  "note": "F001-47"
+}
+
+### Actualizar una ingreso existente
+PUT {{host}}/incomes/{{id}}
+Content-Type: application/json
+
+{
+  "amount": 15.2,
+  "category_id": "{{category_id}}",
+  "note": "Updated income 1"
+}
+
+### Eliminar una ingreso por ID
+DELETE {{host}}/incomes/{{id}}

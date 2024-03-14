@@ -13,7 +13,9 @@ func CategoryHandler(app *fiber.App) {
 	categoryGroup := app.Group("/categories")
 
 	categoryGroup.Get("/", func(c *fiber.Ctx) error {
-		categories, err := repo.GetAll("", "")
+		categoryType := c.Query("category_type", "INGRESO")
+		name := c.Query("name", "")
+		categories, err := repo.GetAll(categoryType, name)
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 				"error": err.Error(),

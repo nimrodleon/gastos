@@ -18,7 +18,7 @@ func NewCategoryRepository() *CategoryRepository {
 
 func (r *CategoryRepository) GetAll(categoryType string, name string) ([]models.Category, error) {
 	var categories []models.Category
-	err := r.db.Where("CategoryType = ? AND Name LIKE ?", categoryType, "%"+name+"%").Find(&categories).Error
+	err := r.db.Where("category_type = ? AND name LIKE ?", categoryType, "%"+name+"%").Find(&categories).Error
 	return categories, err
 }
 
@@ -32,6 +32,7 @@ func (r *CategoryRepository) GetByID(id uuid.UUID) (*models.Category, error) {
 }
 
 func (r *CategoryRepository) Create(category *models.Category) error {
+	category.ID = uuid.New()
 	return r.db.Create(category).Error
 }
 

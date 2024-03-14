@@ -7,11 +7,11 @@ import (
 )
 
 type Expense struct {
-	ID         uuid.UUID `gorm:"type:uuid;primary_key;"`
-	Amount     float64
-	CategoryID uuid.UUID
-	Category   Category `gorm:"foreignKey:CategoryID"`
-	Note       string
-	CreatedAt  time.Time
-	UpdatedAt  time.Time
+	ID         uuid.UUID `gorm:"type:uuid;primary_key;" json:"id"`
+	Amount     float64   `json:"amount"`
+	CategoryID uuid.UUID `json:"category_id"`
+	Category   Category  `gorm:"foreignKey:CategoryID" json:"category"`
+	Note       string    `json:"note"`
+	CreatedAt  time.Time `json:"created_at"`
+	UpdatedAt  time.Time `json:"updated_at"`
 }
